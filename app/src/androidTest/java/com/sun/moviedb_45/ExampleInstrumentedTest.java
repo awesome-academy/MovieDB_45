@@ -1,4 +1,4 @@
-package com.example.moviedb_45;
+package com.sun.moviedb_45;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.example.moviedb_45;
+package com.sun.moviedb_45;
 
 import org.junit.Test;
 
