@@ -15,6 +15,7 @@ import com.sun.moviedb_45.data.source.MovieRepository;
 import com.sun.moviedb_45.data.source.local.MovieLocalDataSource;
 import com.sun.moviedb_45.data.source.remote.MovieRemoteDataSource;
 import com.sun.moviedb_45.databinding.FragmentHomeBinding;
+import com.sun.moviedb_45.ui.category.CategoryActivity;
 
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel>
         implements HomeNavigator, HomeCategoryAdapter.CategoryListener ,View.OnClickListener {
@@ -74,7 +75,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
 
     @Override
     public void showMovie(String categoryKey, String categoryName) {
-
+        startActivity(CategoryActivity.getIntent(getActivity(), categoryKey, categoryName));
     }
 
     @Override
@@ -92,12 +93,18 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         switch (category){
             case CategoryName.TITLE_NOW_PLAYING:
                 showMovie(CategoryKey.CATEGORY_NOW_PLAYING,CategoryName.TITLE_NOW_PLAYING);
+                break;
             case CategoryName.TITLE_POPULAR:
                 showMovie(CategoryKey.CATEGORY_POPULAR,CategoryName.TITLE_POPULAR);
+                break;
             case CategoryName.TITLE_TOP_RATE:
                 showMovie(CategoryKey.CATEGORY_TOP_RATE,CategoryName.TITLE_TOP_RATE);
+                break;
             case CategoryName.TITLE_UP_COMING:
                 showMovie(CategoryKey.CATEGORY_UP_COMING,CategoryName.TITLE_UP_COMING);
+                break;
+                default:
+                    break;
         }
     }
 

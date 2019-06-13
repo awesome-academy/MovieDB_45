@@ -71,7 +71,7 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
 
         @Override
         public void onClick(View v) {
-            if (mListener == null) {
+            if (mListener != null) {
                 mListener.onCategoryClick(mItemHomeBinding.textCategory.getText().toString());
             }
         }

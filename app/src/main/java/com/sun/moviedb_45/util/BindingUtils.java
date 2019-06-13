@@ -9,19 +9,17 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.sun.moviedb_45.R;
 import com.sun.moviedb_45.data.model.Movie;
+import com.sun.moviedb_45.ui.category.CategoryAdapter;
 import com.sun.moviedb_45.ui.home.HomeCategoryAdapter;
 import com.sun.moviedb_45.ui.home.ItemCategoryAdapter;
 
 public class BindingUtils {
     @BindingAdapter("imageUrl")
     public static void setImage(ImageView imageView, String image_url) {
-        RequestOptions requestOptions = new RequestOptions();
-        requestOptions.placeholder(R.drawable.loading);
-        requestOptions.error(R.drawable.loading);
-        String imageLink = StringUtils.getImage(image_url);
-        Glide.with(imageView.getContext())
-                .load(imageLink)
-                .apply(requestOptions)
+        GlideApp.with(imageView)
+                .load(StringUtils.getImage(image_url))
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.no_image)
                 .into(imageView);
     }
     @BindingAdapter("bindCategory")
@@ -39,6 +37,14 @@ public class BindingUtils {
         HomeCategoryAdapter adapter = (HomeCategoryAdapter) recycler.getAdapter();
         if (adapter != null) {
             adapter.update(movies, categories);
+        }
+    }
+
+    @BindingAdapter("bindMovies")
+    public static void bindGenreMovie(RecyclerView recyclerView, ObservableList<Movie> movies){
+        CategoryAdapter adapter = (CategoryAdapter) recyclerView.getAdapter();
+        if (adapter!=null){
+            adapter.addMovies(movies);
         }
     }
 }
