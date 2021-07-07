@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sun.moviedb_45.ui.category.CategoryAdapter.ViewHolder"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_200"
+        app:cardCornerRadius="@dimen/dp_10"
+        app:cardElevation="@dimen/dp_5"
+        app:cardUseCompatPadding="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10">
+
+            <ImageView
+                android:id="@+id/image_item_category"
+                android:layout_width="@dimen/dp_130"
+                android:layout_height="@dimen/dp_160"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{viewModel.mPosterPath}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/text_movie_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_20"
+                android:text="@{viewModel.mTitle}"
+                app:layout_constraintTop_toTopOf="@id/image_item_category"
+                app:layout_constraintLeft_toRightOf="@id/image_item_category"
+                app:layout_constraintRight_toRightOf="parent"/>
+            <TextView
+                android:id="@+id/text_movie_rating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:textSize="@dimen/sp_15"
+                android:text="@{viewModel.mVoteAverage}"
+                app:layout_constraintTop_toBottomOf="@id/text_movie_name"
+                app:layout_constraintLeft_toRightOf="@id/image_item_category"
+                app:layout_constraintRight_toRightOf="parent"/>
+            <TextView
+                android:id="@+id/text_movie_release"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:textSize="@dimen/sp_15"
+                android:text="@{viewModel.mReleaseDate}"
+                app:layout_constraintTop_toBottomOf="@id/text_movie_rating"
+                app:layout_constraintLeft_toRightOf="@id/image_item_category"
+                app:layout_constraintRight_toRightOf="parent"/>
+            <TextView
+                android:id="@+id/text_movie_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:textSize="@dimen/sp_15"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:text="@{viewModel.mOverView}"
+                app:layout_constraintTop_toBottomOf="@id/text_movie_release"
+                app:layout_constraintLeft_toRightOf="@id/image_item_category"
+                app:layout_constraintRight_toRightOf="parent"/>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+</layout>
